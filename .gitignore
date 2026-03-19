@@ -54,3 +54,7 @@ whatsapp_service/data_auth
 
 # Ignore key files for decrypting credentials and more.
 /config/credentials/*.key
+
+# Ignore key files for decrypting credentials and more.
+/config/*.key
+

@@ -12,7 +12,7 @@ class Api::Instagram::RedirectsController < Api::ApplicationController
   end
 
   def app_id
-    @app_id ||= ENV.fetch("INSTAGRAM_APP_ID")
+    @app_id ||= ENV.fetch("META_APP_ID")
   end
 
   def redirect_uri
