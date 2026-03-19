@@ -15,7 +15,6 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-credentials.yml.enc
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
@@ -57,4 +56,3 @@ whatsapp_service/data_auth
 
 # Ignore key files for decrypting credentials and more.
 /config/*.key
-
