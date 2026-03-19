@@ -12,8 +12,6 @@ servers:
     options:
       cpus: 1
       memory: 512M
-      network: tattoo-network
-      network-alias: tattoo
 
   job:
     hosts:
@@ -22,8 +20,6 @@ servers:
     options:
       cpus: 1
       memory: 512M
-      network: tattoo-network
-      network-alias: tattoo-sidekiq
 
 # Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
 # Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.
@@ -115,7 +111,7 @@ accessories:
     image: postgres:17
     host: 3.89.113.106
     options:
-      network: tattoo-network
+      network: kamal
     env:
       secret:
         - POSTGRES_PASSWORD
@@ -128,6 +124,6 @@ accessories:
     image: redis:7.0
     host: 3.89.113.106
     options:
-      network: tattoo-network
+      network: kamal
     directories:
       - data:/data
