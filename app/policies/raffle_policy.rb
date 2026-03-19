@@ -1,0 +1,1 @@
+class RafflePolicy < ApplicationPolicy; end

@@ -1,0 +1,19 @@
+@remove_stock = true
+
+stock = order_product.stock
+product = stock.product
+
+{
+  id: order_product.id,
+  quantity: order_product.quantity,
+  value: {
+    value: order_product.value_subcents,
+    currency: order_product.value_currency,
+    formatted: order_product.value.format
+  },
+  stock: {
+    id: stock.id,
+    quantity: stock.quantity,
+    product: render("api/products/parse_product", product: product)
+  }
+}

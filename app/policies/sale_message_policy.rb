@@ -1,0 +1,1 @@
+class SaleMessagePolicy < ApplicationPolicy; end

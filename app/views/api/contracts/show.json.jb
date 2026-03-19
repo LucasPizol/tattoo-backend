@@ -1,0 +1,8 @@
+{
+  contract: render("parse_contract", contract: @contract).merge(
+    content: @contract.content,
+    signer_ip: @contract.signer_ip,
+    signer_user_agent: @contract.signer_user_agent,
+    signature_url: @contract.signature.attached? ? url_for(@contract.signature) : nil
+  )
+}

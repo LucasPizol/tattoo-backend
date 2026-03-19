@@ -1,0 +1,15 @@
+image_data = {
+  id: image.id,
+  filename: image.filename,
+  contentType: image.content_type,
+  byteSize: image.byte_size,
+  url: Rails.env.production? ? "https://rainbow-piercing-bucket-v2.s3.amazonaws.com/#{image.key}" : "http://localhost:3001#{Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true)}"
+}
+
+variant = image.image? ? image.variant(:thumbnail) : nil
+
+if variant&.send(:processed?)
+  image_data[:thumbnailUrl] = Rails.env.production? ? "https://rainbow-piercing-bucket-v2.s3.amazonaws.com/#{variant.processed.key}" : "http://localhost:3001#{Rails.application.routes.url_helpers.rails_blob_path(variant.processed, only_path: true)}"
+end
+
+image_data

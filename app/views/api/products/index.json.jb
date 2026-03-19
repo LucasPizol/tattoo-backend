@@ -1,0 +1,6 @@
+{
+  data: render(partial: "parse_product", collection: @products, as: :product),
+  totalPages: @products.total_pages,
+  currentPage: @products.current_page,
+  totalCount: @products.total_count
+}

@@ -1,0 +1,3 @@
+{
+  campaign: render("parse_campaign", campaign: @campaign)
+}

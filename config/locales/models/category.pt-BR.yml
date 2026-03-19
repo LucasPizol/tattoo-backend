@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      category:
+        one: Categoria
+        other: Categorias
+    attributes:
+      category:
+        name: Nome
+        notes: Observações
+        parent_category: Categoria Pai
+        category_id: Categoria Pai
+        company: Empresa
+        company_id: Empresa

@@ -1,0 +1,3 @@
+{
+  saleMessage: render("parse_sale_message", sale_message: @sale_message)
+}

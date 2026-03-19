@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      material:
+        one: Material
+        other: Materiais
+    attributes:
+      material:
+        name: Nome
+        notes: Observações
+        company: Empresa
+        company_id: Empresa

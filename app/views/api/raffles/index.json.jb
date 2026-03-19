@@ -1,0 +1,6 @@
+{
+  data: render(partial: "parse_raffle", collection: @raffles, as: :raffle),
+  totalPages: @raffles.total_pages,
+  currentPage: @raffles.current_page,
+  totalCount: @raffles.total_count
+}

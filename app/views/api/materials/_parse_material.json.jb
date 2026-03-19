@@ -1,0 +1,7 @@
+{
+  id: material.id,
+  name: material.name,
+  notes: material.notes,
+  createdAt: material.created_at,
+  updatedAt: material.updated_at
+}

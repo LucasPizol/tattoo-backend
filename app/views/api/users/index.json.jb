@@ -1,0 +1,12 @@
+{
+  users: @users.order(name: :asc).map do |user|
+    contract = user.contracts.first
+    {
+      id: user.id,
+      name: user.name,
+      role: user.role,
+      commission_percentage: user.commission_percentage,
+      contract: contract ? { id: contract.id, status: contract.status } : nil
+    }
+  end
+}

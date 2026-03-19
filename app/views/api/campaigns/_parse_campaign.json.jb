@@ -1,0 +1,10 @@
+{
+  id: campaign.id,
+  name: campaign.name,
+  description: campaign.description,
+  indicationsOrders: campaign.indications_orders,
+  campaingType: campaign.campaing_type,
+  active: campaign.active,
+  createdAt: campaign.created_at,
+  updatedAt: campaign.updated_at
+}

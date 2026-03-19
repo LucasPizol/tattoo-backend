@@ -1,0 +1,3 @@
+{
+  calendarEvents: render(partial: "parse_calendar_event", collection: @calendar_events, as: :calendar_event)
+}

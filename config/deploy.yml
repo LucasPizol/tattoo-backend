@@ -1,0 +1,128 @@
+# Name of your application. Used to uniquely configure containers.
+service: tattoo
+
+# Name of the container image.
+image: lucaspizol/tattoo
+
+# Deploy to these servers.
+servers:
+  web:
+    hosts:
+      - 3.89.113.106
+    options:
+      cpus: 1
+      memory: 512M
+      network-alias: tattoo
+
+  job:
+    hosts:
+      - 3.89.113.106
+    cmd: bundle exec sidekiq -q default -q mailers
+    options:
+      cpus: 1
+      memory: 512M
+      network-alias: tattoo-sidekiq
+
+# Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
+# Remove this section when using multiple web servers and ensure you terminate SSL at your load balancer.
+#
+# Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
+proxy:
+  ssl: true
+  host: api.tattoo.rainbowpiercing.com.br
+
+deploy_timeout: 60
+drain_timeout: 10
+
+# Credentials for your image host.
+registry:
+  # Specify the registry server, if you're not using Docker Hub
+  # server: registry.digitalocean.com / ghcr.io / ...
+  username: lucaspizol
+
+  # Always use an access token rather than real password when possible.
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+# Inject ENV variables into containers (secrets come from .kamal/secrets).
+env:
+  secret:
+    - RAILS_MASTER_KEY
+    - JWT_SECRET_KEY
+    - CORS_ORIGINS
+    - RAILS_PORT
+    - HOST
+    - CLIENT_SECRET
+    - GEMINI_AI_URL
+    - GEMINI_AI_API_KEY
+    - NODE_ENV
+    - FRONTEND_URL
+    - AR_PRIMARY_KEY
+    - AR_DETERMINISTIC_KEY
+    - AR_KEY_DERIVATION_SALT
+    - AWS_BUCKET
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
+    - INSTAGRAM_APP_ID
+    - INSTAGRAM_APP_SECRET
+    - INSTAGRAM_ACCOUNT_ID
+    - INSTAGRAM_ACCOUNT_ACCESS_TOKEN
+    - INSTAGRAM_VERIFY_CALLBACK_HASH
+    - POSTGRES_PASSWORD
+    - MERCADOPAGO_ACCESS_TOKEN
+    - MERCADOPAGO_SECRET
+    - SMTP_USER_NAME
+    - SMTP_PASSWORD
+    - SMTP_ADDRESS
+    - SMTP_PORT
+    - REDIS_URL
+    - KAGSO_API_KEY
+    - WHATSAPP_WEBHOOK_VERIFY_TOKEN
+    - META_APP_ID
+    - META_APP_SECRET
+  clear:
+    # SOLID_QUEUE_IN_PUMA: true
+    JOB_CONCURRENCY: 2
+    WEB_CONCURRENCY: 2
+    RAILS_LOG_LEVEL: info
+    RAILS_ENV: production
+    POSTGRES_HOST: tattoo-db
+    POSTGRES_USER: tattoo
+    POSTGRES_DB: tattoo_production
+
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+
+volumes:
+  - "tattoo_storage:/tattoo/storage"
+
+builder:
+  arch: amd64
+
+  args:
+    RUBY_VERSION: 3.4.7
+
+ssh:
+  user: ec2-user
+
+# Use accessory services (secrets come from .kamal/secrets).
+accessories:
+  db:
+    image: postgres:17
+    host: 3.89.113.106
+    env:
+      secret:
+        - POSTGRES_PASSWORD
+      clear:
+        POSTGRES_USER: tattoo
+        POSTGRES_DB: tattoo_production
+    directories:
+      - data:/var/lib/postgresql/data
+  redis:
+    image: redis:7.0
+    host: 3.89.113.106
+    directories:
+      - data:/data

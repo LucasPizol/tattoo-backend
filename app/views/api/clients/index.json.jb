@@ -1,0 +1,6 @@
+{
+  data: render(partial: "parse_client", collection: @clients, as: :client),
+  totalPages: @clients.total_pages,
+  currentPage: @clients.current_page,
+  totalCount: @clients.total_count
+}

@@ -1,0 +1,6 @@
+{
+  data: render(partial: "parse_post", collection: @instagram_posts, as: :instagram_post),
+  totalPages: @instagram_posts.total_pages,
+  currentPage: @instagram_posts.current_page,
+  totalCount: @instagram_posts.total_count
+}

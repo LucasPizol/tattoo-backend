@@ -1,0 +1,24 @@
+:concurrency: <%= ENV['SIDEKIQ_WORKERS'] || 4 %>
+:timeout: 3600
+:queues:
+  - [default, 2]
+  - [mailers, 2]
+
+:scheduler:
+  :schedule:
+    sale_messages_sender_worker:
+      cron: "0 13 * * *"
+      class: SaleMessagesSenderJob
+      queue: default
+    birth_date_worker:
+      cron: "0 13 1 * *"
+      class: BirthDateJob
+      queue: default
+    calendar_event_notifier_worker:
+      cron: "0 18 * * *"
+      class: CalendarEventNotifierJob
+      queue: default
+    instagram_synchronize_accounts_worker:
+      cron: "0 13 * * *"
+      class: Instagram::SynchronizeAccountsJob
+      queue: default

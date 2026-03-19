@@ -1,0 +1,6 @@
+permissions = Permission::DefaultPermissions.all.map do |name|
+  resource, action = name.split(".")
+  { name: name, label: I18n.t("permissions.#{resource}.#{action}", default: name), resource: resource, action: action }
+end
+
+{ permissions: permissions }

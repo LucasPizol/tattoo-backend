@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+bundle exec rails db:prepare
+bundle exec rails db:migrate
+bundle install
+
+# Remove PID antigo do Puma/Rails
+rm -f /tattoo/tmp/pids/server.pid
+
+exec "$@"

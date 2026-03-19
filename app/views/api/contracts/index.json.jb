@@ -1,0 +1,3 @@
+{
+  contracts: render(partial: "parse_contract", collection: @contracts, as: :contract)
+}

@@ -1,0 +1,40 @@
+product_type = ProductType.find(product.product_type)
+
+{
+  id: product.id,
+  name: product.name,
+  sku: product.sku,
+  createdAt: product.created_at,
+  updatedAt: product.updated_at,
+  productType: {
+    key: product.product_type,
+    label: product_type&.dig(:label),
+    color: product_type&.dig(:color) || "gray"
+  },
+  value: {
+    value: @current_company_config.calculate_product_value(product.value_subcents),
+    currency: product.value_currency,
+    formatted: @current_company_config.calculate_product_value(product.value).format
+  },
+  originalValue: {
+    value: product.value_subcents,
+    currency: product.value_currency,
+    formatted: product.value.format
+  },
+  tags: product.tags.map { |tag| { id: tag.id, name: tag.name } },
+  requireResponsible: product.require_responsible,
+  images: render(partial: "api/products/parse_image", collection: product.images.sort_by(&:created_at).reverse, as: :image),
+  featured: product.featured,
+  new: product.new,
+  carousel: product.carousel
+}.tap do |hash|
+  if product.material.present?
+    hash[:material] = product.material.format
+  else
+    hash[:material] = {}
+  end
+
+  unless @remove_stock
+    hash[:stock] = product.stocks.map { |stock| { id: stock.id, quantity: stock.quantity } }
+  end
+end

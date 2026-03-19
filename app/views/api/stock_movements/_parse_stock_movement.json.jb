@@ -1,0 +1,32 @@
+product = stock_movement.stock.product
+order = stock_movement.order
+hash = {
+  id: stock_movement.id,
+  createdAt: stock_movement.created_at,
+  updatedAt: stock_movement.updated_at,
+  quantity: stock_movement.quantity,
+  movementType: stock_movement.movement_type,
+  notes: stock_movement.notes,
+  product: {
+    id: product.id,
+    name: product.name,
+    value: {
+      value: product.value_subcents,
+      currency: product.value_currency,
+      formatted: product.value.format
+    }
+  },
+  value: {
+    value: stock_movement.value_subcents,
+    currency: stock_movement.value_currency,
+    formatted: stock_movement.value.format
+  }
+}
+
+hash[:order] = {
+  id: order.id,
+  createdAt: order.created_at,
+  updatedAt: order.updated_at
+} if order.present?
+
+hash

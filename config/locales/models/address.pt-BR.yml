@@ -1,0 +1,26 @@
+pt-BR:
+  activerecord:
+    models:
+      address:
+        one: Endereço
+        other: Endereços
+    attributes:
+      address:
+        name: Nome
+        street: Rua
+        number: Número
+        complement: Complemento
+        neighborhood: Bairro
+        city: Cidade
+        state: Estado
+        zipcode: CEP
+        address_type: Tipo de Endereço
+        favorite: Favorito
+        client: Cliente
+        client_id: Cliente
+    enums:
+      address:
+        address_type:
+          home: Residencial
+          work: Trabalho
+          other: Outro

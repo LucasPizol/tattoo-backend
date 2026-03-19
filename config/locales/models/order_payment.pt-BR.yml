@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      order_payment:
+        one: Pagamento do Pedido
+        other: Pagamentos do Pedido
+    attributes:
+      order_payment:
+        order: Pedido
+        order_id: Pedido
+        user: Usuário
+        user_id: Usuário
+        payment_expected: Pagamento Esperado
+        payment_expected_id: Pagamento Esperado
+        payment_received: Pagamento Recebido
+        payment_received_id: Pagamento Recebido

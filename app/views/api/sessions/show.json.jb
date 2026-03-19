@@ -1,0 +1,14 @@
+company_config = @user.company_config
+
+{
+  user: {
+    role: @user.role ? { id: @user.role.id, name: @user.role.name } : nil,
+    permissions: @user.permissions.pluck(:name),
+    name: @user.name,
+    has_pending_contract: @user.contracts.pending.exists?,
+    config: {
+      birthDateDiscountPercentage: company_config&.birth_date_discount_percentage || 0,
+      productPercentageVariation: company_config&.product_percentage_variation || 0
+    }
+  }
+}

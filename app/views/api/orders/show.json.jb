@@ -1,0 +1,41 @@
+{
+  order: render("parse_order", order: @order).tap do |hash|
+    hash[:orderProducts] = render(partial: "api/order_products/parse_order_product", collection: @order.order_products.includes(stock: [ product: [ { product_tags: :tag }, { images_attachments: { blob: :variant_records } } ] ]), as: :order_product)
+    hash[:appliedBirthDateDiscountPercentage] = @order.applied_birth_date_discount_percentage
+    hash[:canApplyBirthDateDiscount] = @order.can_apply_birth_date_discount?
+
+    if @order.has_applied_birth_date_discount?
+      hash[:birthDateDiscountValue] = {
+        value: @order.birth_date_discount_value.cents,
+        currency: @order.birth_date_discount_value.currency.id,
+        formatted: @order.birth_date_discount_value.format
+      }
+    end
+
+    hash[:comissions] = render(partial: "api/comissions/parse_comission", collection: @order.comissions, as: :comission)
+
+    comissions_value = Money.new(@order.comissions_value)
+
+    hash[:comissionsValue] = {
+      value: comissions_value.cents,
+      currency: comissions_value.currency.id,
+      formatted: comissions_value.format
+    }
+    hash[:valueDivided] = @order.values_divided
+
+    hash[:orderPaymentMethods] = render(partial: "api/order_payment_methods/parse_order_payment_method", collection: @order.order_payment_methods.includes(:payment_method), as: :order_payment_method)
+
+    if @order.client.present?
+      hash[:client] = render("api/clients/parse_client", client: @order.client).tap do |hash|
+        hash[:healthConditions] = []
+
+        Client::HEALTH_CONDITIONS.select { |condition| @order.client.send(condition) }.each do |condition|
+          hash[:healthConditions] << {
+            name: I18n.t("activerecord.attributes.client.#{condition}"),
+            value: condition.to_s.camelize(:lower)
+          }
+        end
+      end
+    end
+  end
+}

@@ -1,0 +1,31 @@
+pt-BR:
+  activerecord:
+    models:
+      calendar_event:
+        one: Evento do Calendário
+        other: Eventos do Calendário
+    attributes:
+      calendar_event:
+        title: Título
+        description: Descrição
+        start_at: Início
+        end_at: Fim
+        event_type: Tipo de Evento
+        status: Status
+        reschedule_count: Contagem de Reagendamentos
+        client: Cliente
+        client_id: Cliente
+        company: Empresa
+        company_id: Empresa
+        order: Pedido
+        order_id: Pedido
+    enums:
+      calendar_event:
+        event_type:
+          piercing: Piercing
+          sell: Venda
+          repair: Retorno
+        status:
+          pending: Pendente
+          completed: Completado
+          canceled: Cancelado

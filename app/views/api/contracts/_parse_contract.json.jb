@@ -1,0 +1,11 @@
+{
+  id: contract.id,
+  status: contract.status,
+  version: contract.version,
+  created_at: contract.created_at,
+  signed_at: contract.signed_at,
+  user: {
+    id: contract.user.id,
+    name: contract.user.name
+  }
+}

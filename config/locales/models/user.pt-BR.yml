@@ -1,0 +1,23 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+    attributes:
+      user:
+        name: Nome
+        username: Nome de Usuário
+        password: Senha
+        password_digest: Senha
+        role: Papel
+        refresh_token: Token de Atualização
+        refresh_token_expires_at: Token Expira em
+        refresh_token_issued_at: Token Emitido em
+        company: Empresa
+        company_id: Empresa
+    enums:
+      user:
+        role:
+          user: Usuário
+          admin: Administrador

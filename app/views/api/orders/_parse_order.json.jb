@@ -1,0 +1,33 @@
+total_value_with_comissions = order.total_value_with_comissions
+
+{
+  id: order.id,
+  status: order.status,
+  createdAt: order.created_at,
+  updatedAt: order.updated_at,
+  productValue: {
+    value: order.product_values_subcents,
+    currency: order.product_values_currency,
+    formatted: order.product_value.format
+  },
+  taxesValue: {
+    value: order.taxes_values_subcents,
+    currency: order.taxes_values_currency,
+    formatted: order.taxes_value.format
+  },
+  totalValue: {
+    value: total_value_with_comissions.cents,
+    currency: total_value_with_comissions.currency.id,
+    formatted: total_value_with_comissions.format
+  },
+  costValue: {
+    value: order.cost_value_subcents,
+    currency: order.cost_value_currency,
+    formatted: order.cost_value.format
+  },
+  isPartsSynchronized: order.is_parts_synchronized?,
+  createdBy: order.created_by,
+  paymentMethods: order.payment_methods.map { render("api/payment_methods/parse_payment_method", payment_method: it) }
+}.tap do |hash|
+  hash[:client] = render("api/clients/parse_client", client: order.client) if order.client.present?
+end

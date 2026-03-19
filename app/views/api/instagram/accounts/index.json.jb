@@ -1,0 +1,3 @@
+{
+  instagramAccounts: render(partial: "parse_account", collection: @instagram_accounts, as: :instagram_account)
+}

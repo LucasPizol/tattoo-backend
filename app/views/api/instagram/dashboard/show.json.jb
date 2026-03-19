@@ -1,0 +1,7 @@
+{
+  byHour:          @by_hour.map          { |r| { hour: r.hour, totalLikes: r.total_likes.to_i, totalComments: r.total_comments.to_i, postCount: r.post_count.to_i } },
+  byWeekday:       @by_weekday.map       { |r| { weekday: r.weekday, totalLikes: r.total_likes.to_i, totalComments: r.total_comments.to_i, postCount: r.post_count.to_i } },
+  byMonth:         @by_month.map         { |r| { month: r.month, totalLikes: r.total_likes.to_i, totalComments: r.total_comments.to_i, postCount: r.post_count.to_i } },
+  commentsByHour:  @comments_by_hour.map { |r| { hour: r.hour, commentCount: r.comment_count.to_i } },
+  topCommenters:   @top_commenters.map   { |r| { username: r.username, commentCount: r.comment_count.to_i } }
+}

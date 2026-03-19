@@ -1,0 +1,61 @@
+<div class="catalog-container">
+  <div class="catalog-header-container">
+    <div class="catalog-header">
+      <h1 class="catalog-title">Catálogo de Piercings</h1>
+      <div class="header-decoration"></div>
+    </div>
+  </div>
+
+  <div class="products-grid">
+    <% @products.each_slice(3).each_with_index do |row, index| %>
+      <div class="products-row <%= index == 3 ? 'products-row-initial' : '' %>">
+        <% row.each do |product| %>
+          <% height = index >= 3 ? 280 : 245 %>
+          <div class="product-card">
+            <div class="product-image-container" style="height: <%= height %>px;">
+              <% if product.images.attached? %>
+                <% asset_path = Rails.root.join("public", "thumbnails", product.images.first.id.to_s, "800x800.jpg") %>
+                <div style="background-image: url('<%= asset_path %>');
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            height: <%= height %>px;
+                            width: 100%;
+                            border-radius: 12px;
+                            background-position: center;"></div>
+              <% else %>
+                <div class="product-placeholder" style="height: <%= height %>px;">
+                  <div class="placeholder-icon">📿</div>
+                  <span>Sem Imagem</span>
+                </div>
+              <% end %>
+
+              <div class="product-material-badge">
+                <%= product.material&.name %>
+              </div>
+            </div>
+
+            <div class="product-info">
+              <h3 class="product-name"><%= product.name %></h3>
+              <div class="product-details clearfix">
+                <span class="product-sku">SKU: <%= product.sku %></span>
+                <span class="product-price"><%= product.value.format.gsub("R$", "R$ ") %></span>
+              </div>
+
+              <div class="product-categories">
+                <span class="product-category-title">Locais:</span>
+                <% product.categories.sort_by(&:name).each_with_index do |category, index| %>
+                  <% if index > 0 %>
+                    <span class="product-category-separator">,</span>
+                  <% end %>
+                   <span class="product-category-name"><%= category.name %></span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/cover" %>

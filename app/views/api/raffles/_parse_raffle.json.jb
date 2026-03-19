@@ -1,0 +1,11 @@
+{
+  id: raffle.id,
+  name: raffle.name,
+  description: raffle.description,
+  primaryCount: raffle.primary_count,
+  secondaryCount: raffle.secondary_count,
+  filters: raffle.filters,
+  instagramPostId: raffle.instagram_post_id,
+  createdAt: raffle.created_at,
+  updatedAt: raffle.updated_at
+}

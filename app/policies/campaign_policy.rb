@@ -1,0 +1,1 @@
+class CampaignPolicy < ApplicationPolicy; end

@@ -1,0 +1,36 @@
+pt-BR:
+  activerecord:
+    models:
+      client:
+        one: Cliente
+        other: Clientes
+    attributes:
+      client:
+        name: Nome
+        email: E-mail
+        phone: Telefone
+        cpf: CPF
+        rg: RG
+        birth_date: Data de Nascimento
+        gender: Gênero
+        marital_status: Estado Civil
+        instagram_profile: Perfil do Instagram
+        allergic_reactions: Reações Alérgicas
+        diabetes: Diabetes
+        disease_infectious_contagious: Doenças Infecciosas/Contagiosas
+        epilepsy: Epilepsia
+        healing_problems: Problemas de Cicatrização
+        hemophilia: Hemofilia
+        high_blood_pressure: Pressão Alta
+        hipoglycemia: Hipoglicemia
+        hypersensitivity_to_chemicals: Hipersensibilidade a Químicos
+        keloid_proneness: Propensão a Queloide
+        low_blood_pressure: Pressão Baixa
+        pacemaker: Marca-passo
+        vitiligo: Vitiligo
+        indicated_at: Indicado em
+        indicated_by: Indicado por
+        indicated_by_id: Indicado por
+        company: Empresa
+        company_id: Empresa
+        encrypted_password: Senha Criptografada

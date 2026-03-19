@@ -1,0 +1,20 @@
+{
+  id: instagram_post.id,
+  caption: instagram_post.short_caption,
+  createdAt: instagram_post.created_at,
+  updatedAt: instagram_post.updated_at,
+  contents: render(partial: "api/products/parse_image", collection: instagram_post.contents, as: :image),
+  account: {
+    id: instagram_post.account.id,
+    username: instagram_post.account.ig_username,
+    profilePictureUrl: instagram_post.account.ig_profile_picture_url
+  },
+  status: instagram_post.status,
+  publishedAt: instagram_post.published_at&.in_time_zone("Brasilia")&.iso8601,
+  errorMessage: instagram_post.error_message,
+  likeCount: instagram_post.ig_like_count,
+  commentsCount: instagram_post.ig_comments_count,
+  viewCount: instagram_post.ig_view_count,
+  permalink: instagram_post.ig_permalink,
+  url: instagram_post.ig_media_url
+}

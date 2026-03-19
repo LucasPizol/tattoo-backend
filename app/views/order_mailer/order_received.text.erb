@@ -1,0 +1,59 @@
+=====================================
+TATTOO - PEDIDO RECEBIDO
+=====================================
+
+Pedido #<%= @order.id %>
+
+Olá, <%= @client.name %>!
+
+Recebemos seu pedido e estamos muito felizes!
+Confira abaixo os detalhes da sua compra.
+
+-------------------------------------
+ITENS DO PEDIDO
+-------------------------------------
+<% @aggregated_products.each do |product| %>
+• <%= product[:name] %>
+  Material: <%= product[:material_name] %>
+  Quantidade: <%= product[:quantity] %>
+  Valor unitário: <%= product[:value] %>
+  Subtotal: <%= product[:total_value] %>
+
+<% end %>
+
+-------------------------------------
+PAGAMENTOS
+-------------------------------------
+• <%= Client::Payment::PAYMENT_TYPE_MAP[@payment.payment_type] || @payment.payment_method&.name || 'Pagamento' %>
+  Valor: <%= @payment.value.format %>
+<% if @payment.installments.present? && @payment.installments.to_i > 1 %>
+  Parcelado em: <%= @payment.installments %>x de <%= @payment.installment_amount.format %>
+<% else %>
+  À vista
+<% end %>
+
+
+-------------------------------------
+RESUMO
+-------------------------------------
+Subtotal: <%= @order.product_value.format %>
+<% if @shipping.present? && @shipping.profitable_value.cents > 0 %>
+Frete: <%= @shipping.profitable_value.format %>
+<% end %>
+<% if !@payment.taxes_value.zero? %>
+Taxas: <%= @payment.taxes_value.format %>
+<% end %>
+
+TOTAL: <%= @total_value.format %>
+
+=====================================
+NÚMERO DO PEDIDO: #<%= @order.id %>
+=====================================
+
+Guarde este número para acompanhar seu pedido.
+
+Obrigado por escolher a Tattoo!
+Qualquer dúvida, estamos à disposição.
+
+---
+Tattoo

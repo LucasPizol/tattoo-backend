@@ -1,0 +1,21 @@
+raffle_data = render(partial: "parse_raffle", locals: { raffle: @raffle })
+
+raffle_clients = @raffle.raffle_clients
+  .includes(:client, :instagram_comment)
+  .order(:raffle_type, :position)
+
+instagram_post_data = if @raffle.instagram_post.present?
+  post = @raffle.instagram_post
+  {
+    id: post.id,
+    caption: post.short_caption,
+    likeCount: post.ig_like_count,
+    commentsCount: post.ig_comments_count,
+    publishedAt: post.published_at&.strftime("%d/%m/%Y %H:%M:%S")
+  }
+end
+
+raffle_data.merge(
+  clients: render(partial: "parse_raffle_client", collection: raffle_clients, as: :raffle_client),
+  instagramPost: instagram_post_data
+)

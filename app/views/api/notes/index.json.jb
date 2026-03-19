@@ -1,0 +1,3 @@
+{
+  notes: render(partial: "parse_note", collection: @notes, as: :note)
+}

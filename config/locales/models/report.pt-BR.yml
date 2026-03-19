@@ -1,0 +1,19 @@
+pt-BR:
+  activerecord:
+    models:
+      report:
+        one: Relatório
+        other: Relatórios
+    attributes:
+      report:
+        prompt: Prompt
+        content: Conteúdo
+        status: Status
+        company: Empresa
+        company_id: Empresa
+    enums:
+      report:
+        status:
+          pending: Pendente
+          completed: Completado
+          failed: Falhou

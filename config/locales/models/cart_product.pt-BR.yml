@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      cart_product:
+        one: Produto do Carrinho
+        other: Produtos do Carrinho
+    attributes:
+      cart_product:
+        quantity: Quantidade
+        value: Valor
+        value_subcents: Valor
+        client: Cliente
+        client_id: Cliente
+        product: Produto
+        product_id: Produto

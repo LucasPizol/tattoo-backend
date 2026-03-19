@@ -1,0 +1,47 @@
+pt-BR:
+  activerecord:
+    models:
+      order:
+        one: Pedido
+        other: Pedidos
+    attributes:
+      order:
+        status: Status
+        product_value: Valor dos Produtos
+        product_values_subcents: Valor dos Produtos
+        cost_value: Valor de Custo
+        cost_value_subcents: Valor de Custo
+        taxes_value: Valor de Taxas
+        taxes_values_subcents: Valor de Taxas
+        comissions_value: Valor de Comissões
+        comissions_value_cents: Valor de Comissões
+        local_pickup: Retirada no Local
+        paid_at: Pago em
+        values_divided: Valores Divididos
+        applied_birth_date_discount_percentage: Percentual de Desconto de Aniversário Aplicado
+        idempotency_key: Chave de Idempotência
+        created_by: Criado por
+        client: Cliente
+        client_id: Cliente
+        company: Empresa
+        company_id: Empresa
+        address: Endereço
+        address_id: Endereço
+        user: Usuário
+        user_id: Usuário
+        external_id: ID Externo
+        images: Imagens
+    enums:
+      order:
+        status:
+          pending: Pendente
+          paid: Pago
+          canceled: Cancelado
+          reopened: Reaberto
+          waiting_for_payment: Aguardando Pagamento
+          processing: Processando
+          failed: Falhou
+          refunded: Reembolsado
+        created_by:
+          user: Usuário
+          client: Cliente

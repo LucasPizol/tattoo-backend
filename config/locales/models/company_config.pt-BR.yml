@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      company_config:
+        one: Configuração da Empresa
+        other: Configurações da Empresa
+    attributes:
+      company_config:
+        birth_date_discount_percentage: Percentual de Desconto de Aniversário
+        product_percentage_variation: Variação Percentual do Produto
+        company: Empresa
+        company_id: Empresa

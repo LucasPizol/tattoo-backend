@@ -1,0 +1,3 @@
+{
+  materials: render(partial: "parse_material", collection: @materials, as: :material)
+}

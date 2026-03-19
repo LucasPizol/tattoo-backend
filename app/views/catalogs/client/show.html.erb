@@ -1,0 +1,70 @@
+<div class="catalog-container">
+  <div class="catalog-header-container">
+    <div class="catalog-header">
+      <h1 class="catalog-title">Catálogo de Piercings</h1>
+      <div class="header-decoration"></div>
+    </div>
+  </div>
+
+  <%= render "shared/summary" %>
+
+  <% @products.each_with_index do |(product_type, products), category_index| %>
+    <div class="category-container">
+      <div class="category-section <%= 'first-category' if category_index.zero? %>">
+        <h2 class="category-title">
+          <span class="category-text"><%= ProductType.find(product_type)&.dig(:label) %></span>
+        </h2>
+
+        <div class="products-grid">
+          <% products[:products].each_slice(3).each_with_index do |row, row_index| %>
+            <div class="products-row <%= 'products-row-initial' if row_index % 3 == 0 && row_index > 0 %>">
+              <% row.each do |product| %>
+                <div class="product-card">
+                  <div class="product-card-inner">
+                    <div class="product-category-tag">
+                      <% if product.categories.any? %>
+                        <%= product.categories.map { |c| c.name.titleize }.sort_by(&:downcase).join(" · ") %>
+                      <% else %>
+                        Sem categoria
+                      <% end %>
+                    </div>
+
+                    <div class="product-image-container">
+                      <% if product.images.attached? %>
+                        <div class="product-image" style="background-image: url('<%= product.images.first.variant(:catalog).processed.url %>');"></div>
+                      <% else %>
+                        <div class="product-placeholder">
+                          <span class="placeholder-icon">◇</span>
+                          <span>Sem Imagem</span>
+                        </div>
+                      <% end %>
+                    </div>
+
+                    <div class="product-info">
+                      <h3 class="product-name" title="<%= product.name %>"><%= product.name %></h3>
+                      <div class="product-material-name">
+                        <%= product.material&.name || "—" %>
+                      </div>
+                      <div class="product-details clearfix">
+                        <span class="product-sku"><%= product.sku %></span>
+                        <span class="product-price">
+                          <span class="product-price-currency">R$</span>
+                          <%= product.value.format.gsub("R$", "").strip %>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <% (3 - row.size).times do %>
+                <div class="product-card"></div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= render "shared/cover" %>

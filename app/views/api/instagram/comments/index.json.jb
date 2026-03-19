@@ -1,0 +1,6 @@
+{
+  data: render(partial: "parse_comment", collection: @instagram_comments, as: :instagram_comment),
+  totalPages: @instagram_comments.total_pages,
+  currentPage: @instagram_comments.current_page,
+  totalCount: @instagram_comments.total_count
+}

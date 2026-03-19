@@ -1,0 +1,24 @@
+pt-BR:
+  activerecord:
+    models:
+      stock_movement:
+        one: Movimentação de Estoque
+        other: Movimentações de Estoque
+    attributes:
+      stock_movement:
+        quantity: Quantidade
+        value: Valor
+        value_subcents: Valor
+        movement_type: Tipo de Movimentação
+        notes: Observações
+        product: Produto
+        product_id: Produto
+        company: Empresa
+        company_id: Empresa
+        order: Pedido
+        order_id: Pedido
+    enums:
+      stock_movement:
+        movement_type:
+          in: Entrada
+          out: Saída

@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      responsible:
+        one: Responsável
+        other: Responsáveis
+    attributes:
+      responsible:
+        name: Nome
+        email: E-mail
+        phone: Telefone
+        cpf: CPF
+        rg: RG
+        birth_date: Data de Nascimento
+        gender: Gênero
+        client: Cliente
+        client_id: Cliente

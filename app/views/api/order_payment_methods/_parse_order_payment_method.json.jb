@@ -1,0 +1,12 @@
+{
+  id: order_payment_method.id,
+  paymentMethodId: order_payment_method.payment_method_id,
+  paymentMethodName: order_payment_method.payment_method.name,
+  value: {
+    value: order_payment_method.value_cents,
+    currency: order_payment_method.value_currency,
+    formatted: order_payment_method.value.format
+  },
+  createdAt: order_payment_method.created_at,
+  updatedAt: order_payment_method.updated_at
+}

@@ -1,0 +1,12 @@
+{
+  "data": {
+    "id": "1234567890",
+    "status": "approved",
+    "external_reference": 482,
+    "transaction_details": {
+      "net_received_amount": 100.00,
+      "total_paid_amount": 100.00,
+      "installment_amount": 100.00
+    }
+  }
+}

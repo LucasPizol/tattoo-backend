@@ -1,0 +1,161 @@
+pt-BR:
+  activerecord:
+    errors:
+      models:
+        # Mensagens genéricas de erro
+      messages:
+        # Mensagens de validação padrão
+        inclusion: "não está incluído na lista"
+        exclusion: "está reservado"
+        invalid: "não é válido"
+        confirmation: "não confere com a confirmação"
+        accepted: "precisa ser aceito"
+        empty: "não pode ficar em branco"
+        blank: "não pode ficar em branco"
+        present: "deve estar em branco"
+        too_long:
+          one: "é muito longo (máximo de 1 caractere)"
+          other: "é muito longo (máximo de %{count} caracteres)"
+        too_short:
+          one: "é muito curto (mínimo de 1 caractere)"
+          other: "é muito curto (mínimo de %{count} caracteres)"
+        wrong_length:
+          one: "não possui o tamanho esperado (deve ter 1 caractere)"
+          other: "não possui o tamanho esperado (deve ter %{count} caracteres)"
+        not_a_number: "não é um número"
+        not_an_integer: "deve ser um número inteiro"
+        greater_than:
+          one: "deve ser maior que 1"
+          other: "deve ser maior que %{count}"
+        greater_than_or_equal_to:
+          one: "deve ser maior ou igual a 1"
+          other: "deve ser maior ou igual a %{count}"
+        equal_to:
+          one: "deve ser igual a 1"
+          other: "deve ser igual a %{count}"
+        less_than:
+          one: "deve ser menor que 1"
+          other: "deve ser menor que %{count}"
+        less_than_or_equal_to:
+          one: "deve ser menor ou igual a 1"
+          other: "deve ser menor ou igual a %{count}"
+        other_than:
+          one: "deve ser diferente de 1"
+          other: "deve ser diferente de %{count}"
+        odd: "deve ser ímpar"
+        even: "deve ser par"
+        taken: "já está em uso"
+        record_invalid: "A validação falhou: %{errors}"
+        restrict_dependent_destroy:
+          one: "não pode ser excluído pois existe 1 %{record} dependente"
+          other: "não pode ser excluído pois existem %{count} %{record} dependentes"
+    attributes:
+      # Atributos genéricos comuns
+      id: "ID"
+      name: "Nome"
+      email: "Email"
+      password: "Senha"
+      password_confirmation: "Confirmação de senha"
+      created_at: "Criado em"
+      updated_at: "Atualizado em"
+
+  # Mensagens de erro do ActionController
+  actioncontroller:
+    errors:
+      unknown_action: "Ação desconhecida"
+      missing_file: "Arquivo não encontrado"
+
+  permissions:
+    clients:
+      read: "Ver clientes"
+      create: "Criar clientes"
+      update: "Editar clientes"
+      destroy: "Excluir clientes"
+      see_others: "Ver clientes de outras pessoas"
+    orders:
+      read: "Ver pedidos"
+      create: "Criar pedidos"
+      update: "Editar pedidos"
+      destroy: "Excluir pedidos"
+      see_others: "Ver pedidos de outras pessoas"
+    calendar_events:
+      read: "Ver agenda"
+      create: "Criar eventos"
+      update: "Editar eventos"
+      destroy: "Excluir eventos"
+      see_others: "Ver eventos de outras pessoas"
+    products:
+      read: "Ver produtos"
+      create: "Criar produtos"
+      update: "Editar produtos"
+      destroy: "Excluir produtos"
+      see_others: "Ver produtos de outras pessoas"
+    materials:
+      read: "Ver materiais"
+      create: "Criar materiais"
+      update: "Editar materiais"
+      destroy: "Excluir materiais"
+      see_others: "Ver materiais de outras pessoas"
+    categories:
+      read: "Ver locais de perfuração"
+      create: "Criar locais de perfuração"
+      update: "Editar locais de perfuração"
+      destroy: "Excluir locais de perfuração"
+      see_others: "Ver locais de perfuração de outras pessoas"
+    payment_methods:
+      read: "Ver métodos de pagamento"
+      create: "Criar métodos de pagamento"
+      update: "Editar métodos de pagamento"
+      destroy: "Excluir métodos de pagamento"
+      see_others: "Ver métodos de pagamento de outras pessoas"
+    notes:
+      read: "Ver notas"
+      create: "Criar notas"
+      update: "Editar notas"
+      destroy: "Excluir notas"
+      see_others: "Ver notas de outras pessoas"
+    stock_movements:
+      read: "Ver estoque"
+      create: "Registrar movimentação"
+      update: "Editar movimentação"
+      destroy: "Excluir movimentação"
+      see_others: "Ver movimentação de outras pessoas"
+    users:
+      read: "Ver usuários"
+      create: "Criar usuários"
+      update: "Editar usuários"
+      destroy: "Excluir usuários"
+      see_others: "Ver usuários de outras pessoas"
+    indications:
+      read: "Ver indicações"
+      create: "Criar indicações"
+      update: "Editar indicações"
+      destroy: "Excluir indicações"
+      see_others: "Ver indicações de outras pessoas"
+    raffles:
+      read: "Ver sorteios"
+      create: "Criar sorteios"
+      update: "Editar sorteios"
+      destroy: "Excluir sorteios"
+      see_others: "Ver sorteios de outras pessoas"
+    dashboard:
+      read: "Ver dashboard"
+      create: "Ação no dashboard"
+      update: "Ação no dashboard"
+      destroy: "Ação no dashboard"
+      see_others: "Ver dashboard de outras pessoas"
+    instagram:
+      read: "Ver Instagram"
+      create: "Criar posts"
+      update: "Editar posts"
+      destroy: "Excluir posts"
+      see_others: "Ver posts de outras pessoas"
+  # Mensagens de erro do ActionView
+  actionview:
+    helpers:
+      select:
+        prompt: "Por favor selecione"
+      submit:
+        create: "Criar %{model}"
+        update: "Atualizar %{model}"
+        submit: "Salvar %{model}"

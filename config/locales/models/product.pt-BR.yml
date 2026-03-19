@@ -1,0 +1,28 @@
+pt-BR:
+  activerecord:
+    models:
+      product:
+        one: Produto
+        other: Produtos
+    attributes:
+      product:
+        name: Nome
+        description: Descrição
+        value: Valor
+        cost_value: Valor de Custo
+        quantity: Quantidade
+        sku: SKU
+        slug: Slug
+        featured: Destaque
+        carousel: Carrossel
+        new: Novo
+        product_type: Tipo de Produto
+        require_responsible: Requer Responsável
+        material: Material
+        material_id: Material
+        company: Empresa
+        company_id: Empresa
+        user: Usuário
+        user_id: Usuário
+        images: Imagens
+        categories: Categorias

@@ -1,0 +1,17 @@
+pt-BR:
+  activerecord:
+    models:
+      order_product:
+        one: Produto do Pedido
+        other: Produtos do Pedido
+    attributes:
+      order_product:
+        value: Valor
+        value_subcents: Valor
+        cost_value: Valor de Custo
+        cost_value_subcents: Valor de Custo
+        quantity: Quantidade
+        order: Pedido
+        order_id: Pedido
+        product: Produto
+        product_id: Produto

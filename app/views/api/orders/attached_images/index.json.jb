@@ -1,0 +1,3 @@
+{
+  orderImages: render(partial: "api/products/parse_image", collection: @images, as: :image)
+}

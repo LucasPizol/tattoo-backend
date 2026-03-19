@@ -1,0 +1,10 @@
+children = tag.tags.to_a
+
+{
+  id: tag.id,
+  name: tag.name,
+  notes: tag.notes,
+  createdAt: tag.created_at,
+  updatedAt: tag.updated_at,
+  children: children.any? ? render(partial: "parse_tag", collection: children, as: :tag) : []
+}

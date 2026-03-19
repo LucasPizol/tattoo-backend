@@ -1,0 +1,20 @@
+pt-BR:
+  activerecord:
+    models:
+      campaign:
+        one: Campanha
+        other: Campanhas
+    attributes:
+      campaign:
+        name: Nome
+        description: Descrição
+        active: Ativo
+        campaing_type: Tipo de Campanha
+        indications_orders: Pedidos de Indicações
+        company: Empresa
+        company_id: Empresa
+    enums:
+      campaign:
+        campaing_type:
+          indications: Indicações
+          referral: Indicação

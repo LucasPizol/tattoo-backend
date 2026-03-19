@@ -1,0 +1,38 @@
+pt-BR:
+  activerecord:
+    models:
+      payment:
+        one: Pagamento
+        other: Pagamentos
+    attributes:
+      payment:
+        value: Valor
+        value_cents: Valor
+        status: Status
+        payment_type: Tipo de Pagamento
+        cardholder_name: Nome do Titular
+        last_four_digits: Últimos 4 Dígitos
+        installments: Parcelas
+        installment_amount: Valor da Parcela
+        installment_amount_cents: Valor da Parcela
+        taxes_value: Valor de Taxas
+        taxes_value_cents: Valor de Taxas
+        net_received_value: Valor Líquido Recebido
+        net_received_value_cents: Valor Líquido Recebido
+        total_paid_amount: Valor Total Pago
+        total_paid_amount_cents: Valor Total Pago
+        external_id: ID Externo
+        payment_method: Método de Pagamento
+        payment_method_id: Método de Pagamento
+        order: Pedido
+        order_id: Pedido
+    enums:
+      payment:
+        status:
+          pending: Pendente
+          paid: Pago
+          failed: Falhou
+          canceled: Cancelado
+          waiting_for_payment: Aguardando Pagamento
+          processing: Processando
+          refunded: Reembolsado

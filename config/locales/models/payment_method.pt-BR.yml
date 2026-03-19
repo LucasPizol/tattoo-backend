@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      payment_method:
+        one: Método de Pagamento
+        other: Métodos de Pagamento
+    attributes:
+      payment_method:
+        name: Nome
+        taxes: Taxas
+        company: Empresa
+        company_id: Empresa

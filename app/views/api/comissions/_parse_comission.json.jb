@@ -1,0 +1,10 @@
+{
+  id: comission.id,
+  name: comission.name,
+  percentage: comission.percentage,
+  value: {
+    value: comission.value_cents,
+    currency: comission.value_currency,
+    formatted: comission.value.format
+  }
+}

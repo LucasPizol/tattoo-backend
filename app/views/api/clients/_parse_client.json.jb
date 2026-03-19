@@ -1,0 +1,16 @@
+{
+  id: client.id,
+  name: client.name,
+  email: client.email,
+  phone: client.phone,
+  createdAt: client.created_at,
+  updatedAt: client.updated_at,
+  age: client.age,
+  isLowerAge: client.lower_age?,
+  birthDate: client.birth_date&.strftime("%d/%m/%Y"),
+  cpf: client.cpf,
+  observations: client.observations || "",
+  hasHealthConditions: client.has_health_conditions?
+}.tap do |hash|
+  hash[:responsible] = render("api/responsibles/parse_responsible", responsible: client.responsible) if client.responsible.present?
+end

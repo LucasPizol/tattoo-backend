@@ -1,0 +1,30 @@
+{
+  id: calendar_event.id,
+  title: calendar_event.title,
+  displayTitle: calendar_event.display_title,
+  description: calendar_event.description,
+  startAt: calendar_event.start_at,
+  endAt: calendar_event.end_at,
+  phone: calendar_event.phone,
+  clientName: calendar_event.client_name,
+  whatsappMessage: calendar_event.whatsapp_message,
+  sendWhatsappMessage: calendar_event.send_whatsapp_message,
+  sentWhatsappMessageAt: calendar_event.sent_whatsapp_message_at,
+  eventType: {
+    value: calendar_event.event_type,
+    label: t(calendar_event.event_type, scope: "activerecord.attributes.calendar_event.event_types")
+  },
+  status: {
+    value: calendar_event.status,
+    label: t(calendar_event.status, scope: "activerecord.attributes.calendar_event.statuses")
+  },
+  rescheduleCount: calendar_event.reschedule_count,
+  createdAt: calendar_event.created_at,
+  updatedAt: calendar_event.updated_at,
+  color: CalendarEvent::COLORS[calendar_event.status.to_sym]
+}.tap do |hash|
+  hash[:client] = {
+    id: calendar_event.client.id,
+    name: calendar_event.client.name
+  } if calendar_event.client.present?
+end

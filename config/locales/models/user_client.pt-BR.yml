@@ -1,0 +1,20 @@
+pt-BR:
+  activerecord:
+    models:
+      user_client:
+        one: Usuário Cliente
+        other: Usuários Clientes
+    attributes:
+      user_client:
+        name: Nome
+        email: E-mail
+        password: Senha
+        password_digest: Senha
+        authentication_type: Tipo de Autenticação
+        client: Cliente
+        client_id: Cliente
+    enums:
+      user_client:
+        authentication_type:
+          email: E-mail
+          google: Google

@@ -1,0 +1,10 @@
+{
+  id: responsible.id,
+  name: responsible.name,
+  email: responsible.email,
+  phone: responsible.phone,
+  birthDate: responsible.birth_date&.strftime("%d/%m/%Y"),
+  gender: responsible.gender,
+  cpf: responsible.cpf,
+  rg: responsible.rg
+}

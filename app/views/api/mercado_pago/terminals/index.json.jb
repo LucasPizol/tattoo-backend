@@ -1,0 +1,11 @@
+{
+  terminals: @terminals.map do |terminal|
+    {
+      id: terminal.id,
+      posId: terminal.pos_id,
+      storeId: terminal.store_id,
+      externalPosId: terminal.external_pos_id,
+      operatingMode: terminal.operating_mode
+    }
+  end
+}

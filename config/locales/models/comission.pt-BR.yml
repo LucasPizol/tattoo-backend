@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      comission:
+        one: Comissão
+        other: Comissões
+    attributes:
+      comission:
+        name: Nome
+        percentage: Percentual
+        value: Valor
+        value_cents: Valor
+        order: Pedido
+        order_id: Pedido

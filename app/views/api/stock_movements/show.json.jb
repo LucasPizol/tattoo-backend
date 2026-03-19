@@ -1,0 +1,3 @@
+{
+  stockMovement: render("parse_stock_movement", stock_movement: @stock_movement)
+}

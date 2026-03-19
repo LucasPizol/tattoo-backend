@@ -1,0 +1,12 @@
+{
+  id: address.id,
+  street: address.street,
+  city: address.city,
+  state: address.state,
+  zipcode: address.zipcode,
+  neighborhood: address.neighborhood,
+  number: address.number,
+  complement: address.complement,
+  createdAt: address.created_at,
+  updatedAt: address.updated_at
+}

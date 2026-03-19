@@ -1,0 +1,1 @@
+{ roles: @roles.map { |role| { id: role.id, name: role.name } } }

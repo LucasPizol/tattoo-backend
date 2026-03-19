@@ -1,0 +1,16 @@
+{
+  id: instagram_comment.id,
+  text: instagram_comment.text,
+  username: instagram_comment.username,
+  createdAt: instagram_comment.created_at,
+  post: {
+    id: instagram_comment.post.id,
+    caption: instagram_comment.post.short_caption,
+    url: instagram_comment.post.ig_media_url,
+    permalink: instagram_comment.post.ig_permalink
+  },
+  account: {
+    id: instagram_comment.account.id,
+    username: instagram_comment.account.ig_username
+  }
+}

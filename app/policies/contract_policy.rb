@@ -1,0 +1,1 @@
+class ContractPolicy < ApplicationPolicy; end

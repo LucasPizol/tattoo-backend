@@ -1,0 +1,19 @@
+{
+  indications: @indications.map do |indication|
+    total_value = ((indication.total_value || 0) / 100).to_money
+    {
+      id: indication.id,
+      name: indication.name,
+      email: indication.email,
+      phone: indication.phone,
+      totalOrders: indication.total_orders,
+      totalIndications: indication.total_indications,
+      totalIndicationsWhoBought: indication.total_indications_who_bought,
+      totalValue: {
+        value: total_value.cents,
+        currency: total_value.currency.id,
+        formatted: total_value.format
+      }
+    }
+  end
+}

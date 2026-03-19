@@ -1,0 +1,12 @@
+
+{
+  id: note.id,
+  title: note.title,
+  description: note.description,
+  status: note.status,
+  priority: note.priority,
+  dueDate: note.due_date&.strftime("%d/%m/%Y"),
+  completedAt: note.completed_at&.strftime("%d/%m/%Y"),
+  createdAt: note.created_at.strftime("%d/%m/%Y"),
+  updatedAt: note.updated_at.strftime("%d/%m/%Y")
+}

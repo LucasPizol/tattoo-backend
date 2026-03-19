@@ -1,0 +1,16 @@
+{
+  id: raffle_client.id,
+  raffleType: raffle_client.raffle_type,
+  position: raffle_client.position,
+  client: raffle_client.client.present? ? {
+    id: raffle_client.client.id,
+    name: raffle_client.client.name,
+    email: raffle_client.client.email,
+    phone: raffle_client.client.phone,
+    cpf: raffle_client.client.cpf
+  } : nil,
+  instagramComment: raffle_client.instagram_comment.present? ? {
+    username: raffle_client.instagram_comment.username,
+    text: raffle_client.instagram_comment.text
+  } : nil
+}

@@ -1,0 +1,20 @@
+pt-BR:
+  activerecord:
+    models:
+      sale_message:
+        one: Mensagem de Venda
+        other: Mensagens de Venda
+    attributes:
+      sale_message:
+        scheduled_at: Agendado para
+        status: Status
+        order: Pedido
+        order_id: Pedido
+        client: Cliente
+        client_id: Cliente
+    enums:
+      sale_message:
+        status:
+          pending: Pendente
+          sent: Enviado
+          failed: Falhou

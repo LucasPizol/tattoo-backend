@@ -1,0 +1,25 @@
+extra_fields = {
+  addresses: render(partial: "parse_address", collection: @client.addresses, as: :address),
+  cpf: @client.cpf,
+  rg: @client.rg,
+  gender: @client.gender,
+  maritalStatus: @client.marital_status,
+  indicatedBy: {
+    id: @client.indicated_by&.id,
+    name: @client.indicated_by&.name
+  }
+}.tap do |hash|
+  hash[:healthConditions] = []
+  Client::HEALTH_CONDITIONS.select { |condition| @client.send(condition) }.each do |condition|
+    hash[:healthConditions] << {
+      name: I18n.t("activerecord.attributes.client.#{condition}"),
+      value: condition.to_s.camelize(:lower)
+    }
+  end
+end
+
+extra_fields[:responsible] = render("api/responsibles/parse_responsible", responsible: @client.responsible) if @client.responsible.present?
+
+{
+  client: render("parse_client", client: @client).merge(extra_fields)
+}

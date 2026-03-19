@@ -1,0 +1,43 @@
+payment_type_map = {
+  "credit_card" => "Cartão de Crédito",
+  "debit_card" => "Cartão de Débito",
+  "pix" => "Pix",
+  "boleto" => "Boleto",
+  "transfer" => "Transferência",
+  "cash" => "Dinheiro"
+}
+
+def build_order(order)
+  total_value_with_comissions = order.total_value_with_comissions
+  {
+    id: order.id,
+    status: order.status,
+    createdAt: order.created_at,
+    updatedAt: order.updated_at,
+    createdBy: order.created_by,
+    totalValue: {
+      value: total_value_with_comissions.cents,
+      currency: total_value_with_comissions.currency.id,
+      formatted: total_value_with_comissions.format
+    }
+  }.tap do |hash|
+    if order.created_by == "client"
+      hash[:paymentMethods] = order.payments.pluck(:payment_type).uniq.map { Client::Payment::PAYMENT_TYPE_MAP[it] }.join(", ")
+    else
+      hash[:paymentMethods] = order.payment_methods.pluck(:name).uniq.join(", ")
+    end
+
+    hash[:client] = {
+      id: order.client.id,
+      name: order.client.name
+    } if order.client.present?
+  end
+end
+
+
+{
+  data: @orders.map { build_order(it) },
+  totalPages: @orders.total_pages,
+  currentPage: @orders.current_page,
+  totalCount: @orders.total_count
+}

@@ -1,0 +1,6 @@
+{
+  data: render(partial: "parse_stock_movement", collection: @stock_movements, as: :stock_movement),
+  totalPages: @stock_movements.total_pages,
+  currentPage: @stock_movements.current_page,
+  totalCount: @stock_movements.total_count
+}

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pedido Recebido</title>
+  <!--[if mso]>
+  <style type="text/css">
+    table {border-collapse: collapse;}
+    td {font-family: Arial, sans-serif;}
+  </style>
+  <![endif]-->
+
+  <style>
+    :root {
+      --header-color: #764ba2;
+      --primary-color: #3a136d;
+      --secondary-color: #584c69;
+      --tertiary-color: #3d3d5c;
+      --quaternary-color:#fefefe;
+    }
+  </style>
+q
+</head>
+<body style="margin: 0; padding: 12px 0; font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif; -webkit-font-smoothing: antialiased;">
+  <!-- Wrapper Table -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td align="center">
+        <!-- Email Container -->
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; width: 100%; border-radius: 16px; border: 1px solid var(--tertiary-color);">
+
+          <!-- Header -->
+          <tr>
+            <td align="center" style="background: var(--header-color); padding: 40px 30px; border-radius: 16px 16px 0 0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center">
+                    <h1 style="margin: 0; font-size: 28px; font-weight: 700; color: #ffffff; letter-spacing: -1px;">
+                      Tattoo
+                    </h1>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding-top: 15px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="background-color: #ffffff; padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 600; color: var(--primary-color);">
+                          Pedido #<%= @order.id %>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Content -->
+          <tr>
+            <td style="padding: 40px 16px;">
+              <!-- Greeting -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td>
+                    <h2 style="margin: 0 0 10px 0; font-size: 24px; font-weight: 600; color:var(--primary-color);">
+                      Olá, <%= @client.name.split(' ').first.titleize %>! 👋
+                    </h2>
+                    <p style="margin: 0 0 30px 0; font-size: 15px; color:var(--secondary-color); line-height: 1.6;">
+                      Recebemos seu pedido e estamos muito felizes! Confira abaixo os detalhes da sua compra.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Produtos Section -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: var(--quaternary-color); border-radius: 12px; border: 1px solid var(--tertiary-color); margin-bottom: 20px;">
+                <tr>
+                  <td style="padding: 16px;">
+                    <!-- Section Title -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
+                      <tr>
+                        <td style="border-left: 4px solid var(--primary-color); padding-left: 12px;">
+                          <span style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-color);">
+                            Itens do Pedido
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Products List -->
+                    <% @aggregated_products.each_with_index do |product, index| %>
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="<%= index < @aggregated_products.length - 1 ? 'margin-bottom: 15px;' : '' %>">
+                        <tr>
+                          <td width="60" valign="top">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                              <tr>
+                                <img src="<%= product[:thumbnail_url] %>" alt="<%= product[:name] %>" style="width: 60px; height: 60px; object-fit: cover; border-radius: 12px;">
+                              </tr>
+                            </table>
+                          </td>
+                          <td width="15"></td>
+                          <td valign="middle">
+                            <p style="margin: 0 0 4px 0; font-weight: 600; font-size: 15px; color: var(--primary-color);">
+                              <%= product[:name] %>
+                            </p>
+                            <p style="margin: 0; font-size: 13px; color:var(--secondary-color);">
+                              <%= product[:material_name] %> • Qtd: <%= product[:quantity] %>
+                            </p>
+                          </td>
+                          <td align="right" valign="middle" style="white-space: nowrap;">
+                            <p style="margin: 0 0 4px 0; font-size: 13px; color:var(--secondary-color);">
+                              <%= product[:value] %> un.
+                            </p>
+                            <p style="margin: 0; font-weight: 600; font-size: 15px; color:var(--primary-color);">
+                              <%= product[:total_value] %>
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+                    <% end %>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Pagamentos Section -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: var(--quaternary-color); border-radius: 12px; border: 1px solid var(--tertiary-color); margin-bottom: 20px;">
+                <tr>
+                  <td style="padding: 25px;">
+                    <!-- Section Title -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
+                      <tr>
+                        <td style="border-left: 4px solid var(--primary-color); padding-left: 12px;">
+                          <span style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-color);">
+                            Pagamentos
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Payment List -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="40" valign="top">
+                          <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                            <tr>
+                              <td width="40" height="40" align="center" valign="middle" style="border: 1px solid var(--primary-color); background: #ffffff; border-radius: 10px; font-size: 18px;">
+                                <% case @payment_method %>
+                                <% when 'pix' %>
+                                  📱
+                                <% when 'credit_card' %>
+                                  💳
+                                <% when 'debit_card' %>
+                                  💳
+                                <% when 'boleto' %>
+                                  📄
+                                <% when 'cash' %>
+                                  💵
+                                <% else %>
+                                  💰
+                                <% end %>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td width="12"></td>
+                        <td valign="middle">
+                          <p style="margin: 0 0 2px 0; font-weight: 500; font-size: 14px; color: var(--primary-color);">
+                            <%= Client::Payment::PAYMENT_TYPE_MAP[@payment_method] || @payment.payment_method&.name || 'Pagamento' %>
+                          </p>
+                          <p style="margin: 0; font-size: 12px; color:var(--secondary-color);">
+                            <% if @payment.installments.present? && @payment.installments.to_i > 1 %>
+                              <%= @payment.installments %>x de <%= @payment.installment_amount.format %>
+                            <% else %>
+                              À vista
+                            <% end %>
+                          </p>
+                        </td>
+                        <td align="right" valign="middle">
+                          <span style="font-weight: 600; color: var(--primary-color);"><%= @payment.value.format %></span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Total Section -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: var(--quaternary-color); border-radius: 12px; border: 1px solid var(--tertiary-color); margin-bottom: 20px;">
+                <tr>
+                  <td style="padding: 25px;">
+                    <!-- Section Title -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
+                      <tr>
+                        <td style="border-left: 4px solid var(--primary-color); padding-left: 12px;">
+                          <span style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-color);">
+                            Resumo
+                          </span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Subtotal -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding: 8px 0;">
+                          <span style="font-size: 14px; color: var(--primary-color);">Subtotal</span>
+                        </td>
+                        <td align="right" style="padding: 8px 0;">
+                          <span style="font-weight: 500; color: var(--primary-color);"><%= @order.product_value.format %></span>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Shipping -->
+                    <% if @shipping.present? && @shipping.profitable_value.cents > 0 %>
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="padding: 8px 0;">
+                            <span style="font-size: 14px; color: var(--primary-color);">Frete</span>
+                          </td>
+                          <td align="right" style="padding: 8px 0;">
+                            <span style="font-weight: 500; color: var(--primary-color);"><%= @shipping.profitable_value.format %></span>
+                          </td>
+                        </tr>
+                      </table>
+                    <% end %>
+
+                    <% if !@payment.taxes_value.zero? %>
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td style="padding: 8px 0;">
+                            <span style="font-size: 14px; color: var(--primary-color);">Taxas <%= @payment.installments.to_i > 1 ? "(parcelamento)" : '' %></span>
+                          </td>
+                          <td align="right" style="padding: 8px 0;">
+                            <span style="font-weight: 500; color: var(--primary-color);"><%= @payment.taxes_value.format %></span>
+                          </td>
+                        </tr>
+                      </table>
+                    <% end %>
+
+                    <!-- Grand Total -->
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top: 2px solid #4c4380; margin-top: 10px; padding-top: 15px;">
+                      <tr>
+                        <td style="padding-top: 15px;">
+                          <span style="font-size: 18px; font-weight: 600; color: var(--primary-color);">Total</span>
+                        </td>
+                        <td align="right" style="padding-top: 15px;">
+                          <span style="font-size: 18px; font-weight: 700; color: var(--primary-color);"><%= @total_value.format %></span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Order Number Highlight -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: var(--quaternary-color); border-radius: 12px; border: 1px solid var(--tertiary-color);">
+                <tr>
+                  <td align="center" style="padding: 30px;">
+                    <p style="margin: 0 0 10px 0; font-size: 14px; color:var(--secondary-color);">
+                      Número do seu pedido:
+                    </p>
+                    <p style="margin: 0; font-size: 32px; font-weight: 700; color: var(--primary-color); font-family: 'Courier New', Courier, monospace;">
+                      #<%= @order.id %>
+                    </p>
+                    <p style="margin: 15px 0 0 0; font-size: 13px; color:var(--secondary-color);">
+                      Guarde este número para acompanhar seu pedido
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="padding: 30px; border-top: 1px solid var(--tertiary-color);">
+              <p style="margin: 0 0 15px 0; font-size: 13px; color:var(--secondary-color); line-height: 1.6;">
+                Obrigado por escolher a Tattoo! 💜<br>
+                Qualquer dúvida, estamos à disposição.
+              </p>
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding: 0 8px;">
+                    <a href="#" style="display: inline-block; width: 40px; height: 40px; line-height: 40px; text-align: center; background-color: var(--tertiary-color); border-radius: 50%; text-decoration: none; font-size: 16px;">📸</a>
+                  </td>
+                  <td style="padding: 0 8px;">
+                    <a href="#" style="display: inline-block; width: 40px; height: 40px; line-height: 40px; text-align: center; background-color: var(--tertiary-color); border-radius: 50%; text-decoration: none; font-size: 16px;">📱</a>
+                  </td>
+                  <td style="padding: 0 8px;">
+                    <a href="#" style="display: inline-block; width: 40px; height: 40px; line-height: 40px; text-align: center; background-color: var(--tertiary-color); border-radius: 50%; text-decoration: none; font-size: 16px;">✉️</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+        <!-- /Email Container -->
+      </td>
+    </tr>
+  </table>
+  <!-- /Wrapper Table -->
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  id: payment_method.id,
+  name: payment_method.name,
+  taxes: payment_method.taxes,
+  createdAt: payment_method.created_at,
+  updatedAt: payment_method.updated_at
+}

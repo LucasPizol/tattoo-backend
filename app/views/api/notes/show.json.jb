@@ -1,0 +1,3 @@
+{
+  note: render("parse_note", note: @note)
+}

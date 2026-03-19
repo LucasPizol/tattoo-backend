@@ -1,0 +1,5 @@
+{
+  instagramPost: render("parse_post", instagram_post: @instagram_post).tap do |hash|
+    hash[:caption] = @instagram_post.caption
+  end
+}

@@ -1,0 +1,26 @@
+pt-BR:
+  activerecord:
+    models:
+      note:
+        one: Anotação
+        other: Anotações
+    attributes:
+      note:
+        title: Título
+        description: Descrição
+        status: Status
+        priority: Prioridade
+        due_date: Data de Vencimento
+        completed_at: Completado em
+        company: Empresa
+        company_id: Empresa
+    enums:
+      note:
+        status:
+          open: Aberto
+          in_progress: Em Progresso
+          completed: Completado
+        priority:
+          low: Baixa
+          medium: Média
+          high: Alta

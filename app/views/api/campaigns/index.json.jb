@@ -1,0 +1,3 @@
+{
+  campaigns: render(partial: "parse_campaign", collection: @campaigns, as: :campaign)
+}

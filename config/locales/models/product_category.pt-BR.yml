@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      product_category:
+        one: Categoria do Produto
+        other: Categorias do Produto
+    attributes:
+      product_category:
+        product: Produto
+        product_id: Produto
+        category: Categoria
+        category_id: Categoria

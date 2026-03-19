@@ -1,0 +1,7 @@
+{
+  id: instagram_account.id,
+  username: instagram_account.ig_username,
+  profilePictureUrl: instagram_account.ig_profile_picture_url,
+  createdAt: instagram_account.created_at,
+  updatedAt: instagram_account.updated_at
+}

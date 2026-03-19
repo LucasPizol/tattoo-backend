@@ -1,0 +1,3 @@
+{
+  paymentMethods: render(partial: "parse_payment_method", collection: @payment_methods, as: :payment_method)
+}

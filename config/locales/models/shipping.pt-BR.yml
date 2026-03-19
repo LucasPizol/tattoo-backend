@@ -1,0 +1,25 @@
+pt-BR:
+  activerecord:
+    models:
+      shipping:
+        one: Envio
+        other: Envios
+    attributes:
+      shipping:
+        company: Transportadora
+        cost: Custo
+        cost_cents: Custo
+        delivered_at: Entregue em
+        estimated_at: Estimado em
+        estimated_delivery: Previsão de Entrega
+        status: Status
+        tracking_number: Código de Rastreio
+        order: Pedido
+        order_id: Pedido
+    enums:
+      shipping:
+        status:
+          pending: Pendente
+          in_progress: Em Trânsito
+          delivered: Entregue
+          canceled: Cancelado

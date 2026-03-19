@@ -1,0 +1,18 @@
+<div class="summary-container">
+  <div class="summary-header">
+    <h2 class="summary-title">Sumário</h2>
+    <p class="summary-subtitle">Índice de categorias</p>
+  </div>
+
+  <div class="summary-content">
+    <% @products.each do |product_type, products| %>
+      <div class="summary-item">
+        <span class="summary-category-name">
+          <%= ProductType.find(product_type)&.dig(:label) %>
+        </span>
+        <span class="summary-item-count"><%= products[:size] %> <%= products[:size] == 1 ? 'produto' : 'produtos' %></span>
+        <span class="summary-page-number"><%= products[:page] %></span>
+      </div>
+    <% end %>
+  </div>
+</div>
