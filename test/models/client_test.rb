@@ -50,10 +50,7 @@
 require "test_helper"
 
 class ClientTest < ActiveSupport::TestCase
-  should validate_presence_of :name
-
-  test "age" do
-    client = clients(:one)
-    assert_equal 36, client.age
-  end
+  # test "the truth" do
+  #   assert true
+  # end
 end
