@@ -73,7 +73,7 @@ class Order < ApplicationRecord
     canceled: 2,
     reopened: 3,
     waiting_for_payment: 4,
-    processing: 5,
+    processing: 5
   }
 
   enum :created_by, { user: 0, client: 1 }

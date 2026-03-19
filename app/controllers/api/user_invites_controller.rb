@@ -1,5 +1,5 @@
 class Api::UserInvitesController < Api::ApplicationController
-  skip_before_action :authenticate_request, only: [:accept]
+  skip_before_action :authenticate_request, only: [ :accept ]
 
   def index
     user_invites = current_company.user_invites

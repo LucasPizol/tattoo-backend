@@ -27,7 +27,7 @@ class Contract < ApplicationRecord
 
   enum :status, {
     pending: 0,
-    signed: 1,
+    signed: 1
   }
 
   validates :content, presence: true

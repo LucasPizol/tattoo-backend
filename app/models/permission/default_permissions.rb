@@ -17,7 +17,7 @@ class Permission::DefaultPermissions
     dashboard: ACTIONS + %w[see_others],
     instagram: ACTIONS + %w[see_others],
     roles: ACTIONS + %w[see_others],
-    permissions: ACTIONS + %w[see_others],
+    permissions: ACTIONS + %w[see_others]
   }
 
   def self.all

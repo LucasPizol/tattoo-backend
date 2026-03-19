@@ -30,7 +30,6 @@ class UserInvite < ApplicationRecord
   validates :commission_percentage, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
 
   normalizes :phone, with: ->(value) do
-
     normalized_value = value.gsub(/[^0-9]/, "")
 
     if normalized_value.length == 11
@@ -43,6 +42,6 @@ class UserInvite < ApplicationRecord
   enum :status, {
     pending: 0,
     accepted: 1,
-    rejected: 2,
+    rejected: 2
   }
 end

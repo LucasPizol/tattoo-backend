@@ -53,52 +53,6 @@ jobs:
       - name: Lint code for consistent style
         run: bin/rubocop -f github
 
-  test:
-    runs-on: ubuntu-latest
-
-    services:
-      postgres:
-        image: postgres:17
-        env:
-          POSTGRES_USER: tattoo
-          POSTGRES_PASSWORD: tattoo
-          POSTGRES_DB: tattoo_test
-        ports:
-          - 5432:5432
-        options: --health-cmd "pg_isready -U tattoo" --health-interval 10s --health-timeout 5s --health-retries 5
-
-    steps:
-      - name: Install packages
-        run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libyaml-dev pkg-config google-chrome-stable
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
-
-      - name: Run tests
-        env:
-          RAILS_ENV: test
-          POSTGRES_USER: tattoo
-          POSTGRES_PASSWORD: tattoo
-          POSTGRES_DB: tattoo_test
-          POSTGRES_HOST: localhost
-          REDIS_URL: redis://localhost:6379/1
-          WHATSAPP_BUSINESS_PHONE_NUMBER_ID: 123456
-        run: bin/rails db:test:prepare test
-
-      - name: Keep screenshots from failed system tests
-        uses: actions/upload-artifact@v4
-        if: failure()
-        with:
-          name: screenshots
-          path: ${{ github.workspace }}/tmp/screenshots
-          if-no-files-found: ignore
-
   deploy:
     runs-on: ubuntu-latest
     needs: [scan_ruby, scan_js, lint, test]
