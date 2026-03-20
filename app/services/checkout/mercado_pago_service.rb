@@ -38,7 +38,7 @@ class Checkout::MercadoPagoService
       additional_info: {
         items: order.order_products.includes(stock: :product).map do |product|
           image = product.stock.product.images.first
-          image_url = "https://rainbow-piercing-bucket-v2.s3.amazonaws.com/#{image.key}"
+          image_url = "https://tattoo-bucket-v1.s3.amazonaws.com/#{image.key}"
 
           {
             title: product.stock.product.name,

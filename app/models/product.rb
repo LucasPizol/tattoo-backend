@@ -117,12 +117,12 @@ class Product < ApplicationRecord
         filename: image.filename,
         contentType: image.content_type,
         byteSize: image.byte_size,
-        url: "https://rainbow-piercing-bucket-v2.s3.amazonaws.com/#{image.key}"
+        url: "https://tattoo-bucket-v1.s3.amazonaws.com/#{image.key}"
       }
 
       variant = image.image? ? image.variant(:thumbnail) : nil
       processed = variant&.processed
-      image_data[:thumbnailUrl] = "https://rainbow-piercing-bucket-v2.s3.amazonaws.com/#{processed.key}" if processed
+      image_data[:thumbnailUrl] = "https://tattoo-bucket-v1.s3.amazonaws.com/#{processed.key}" if processed
 
       image_data
     end
@@ -134,7 +134,7 @@ class Product < ApplicationRecord
     variant = image.image? ? image.variant(:thumbnail) : nil
     processed = variant&.processed
 
-    "https://rainbow-piercing-bucket-v2.s3.amazonaws.com/#{processed.key}" if processed
+    "https://tattoo-bucket-v1.s3.amazonaws.com/#{processed.key}" if processed
   end
 
   def available_quantity

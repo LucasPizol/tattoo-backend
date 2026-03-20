@@ -43,12 +43,12 @@ extra_fields = {
                 filename: image.filename,
                 contentType: image.content_type,
                 byteSize: image.byte_size,
-                url: "https://rainbow-piercing-bucket-v2.s3.amazonaws.com/#{image.key}"
+                url: "https://tattoo-bucket-v1.s3.amazonaws.com/#{image.key}"
               }
 
               variant = image.variant(resize_to_limit: [ 80, 80 ])
               processed = variant.processed
-              image_data[:thumbnailUrl] = "https://rainbow-piercing-bucket-v2.s3.amazonaws.com/#{processed.key}" if processed
+              image_data[:thumbnailUrl] = "https://tattoo-bucket-v1.s3.amazonaws.com/#{processed.key}" if processed
 
               image_data
             end

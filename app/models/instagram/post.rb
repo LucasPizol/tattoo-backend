@@ -116,6 +116,6 @@ class Instagram::Post < ApplicationRecord
   private
 
   def base_url
-    "https://rainbow-piercing-bucket-v2.s3.amazonaws.com"
+    "https://tattoo-bucket-v1.s3.amazonaws.com"
   end
 end
