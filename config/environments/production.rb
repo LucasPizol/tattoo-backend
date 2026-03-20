@@ -18,12 +18,12 @@ Rails.application.configure do
 
   config.ssl_options = {
     redirect: {
-      exclude: ->(request) { request.path == "/up" || request.path.include?("/webhook") }
+      exclude: ->(request) { request.path == "/up" || request.path == "/healthcheck" || request.path.include?("/webhook") }
     }
   }
 
   config.host_authorization = {
-    exclude: ->(request) { request.path == "/up" || request.path.include?("/webhook") }
+    exclude: ->(request) { request.path == "/up" || request.path == "/healthcheck" || request.path.include?("/webhook") }
   }
 
   config.hosts << "api.tattoo.rainbowpiercing.com.br"
