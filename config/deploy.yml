@@ -110,6 +110,8 @@ accessories:
   db:
     image: postgres:17
     host: 3.89.113.106
+    options:
+      network-alias: tattoo-db
     env:
       secret:
         - POSTGRES_PASSWORD
@@ -121,5 +123,7 @@ accessories:
   redis:
     image: redis:7.0
     host: 3.89.113.106
+    options:
+      network-alias: tattoo-redis
     directories:
       - data:/data
